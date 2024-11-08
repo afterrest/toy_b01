@@ -3,7 +3,7 @@ FROM openjdk:17-jdk-slim AS build
 LABEL authors="afterrest"
 WORKDIR /app
 COPY . .
-# Build-time variables
+RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
 #runtime stage
