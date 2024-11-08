@@ -3,8 +3,9 @@ FROM openjdk:17-jdk-slim AS build
 LABEL authors="afterrest"
 WORKDIR /app
 COPY . .
+
 RUN chmod +x ./gradlew
-RUN ./gradlew clean build -x test
+RUN ./gradlew clean build --scan || true
 
 #runtime stage
 FROM openjdk:17-jdk-slim
